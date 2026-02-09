@@ -21,8 +21,26 @@ function toCamelCase(text) {
     .replace(/\s+(\w)/g, (_, letter) => letter.toUpperCase());
 }
 
+//Basic email/ “looks valid” check (heuristic).
+function looksLikeEmail(text) {
+  if (typeof text !== "string") {
+    throw new Error("looksLikeEmail expects a string");
+  }
+
+  const at = text.indexOf("@");
+  const dot = text.lastIndexOf(".");
+
+  if (at <= 0) return false;
+  if (dot <= at + 1) return false;
+  if (dot >= text.length - 1) return false;
+  if (text.indexOf(" ") !== -1) return false;
+
+  return true;
+}
+
 // Export ALL string utilities here
 module.exports = {
   normalizeWhitespace,
   toCamelCase,
+  looksLikeEmail,
 };
