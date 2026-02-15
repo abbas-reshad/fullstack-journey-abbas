@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const fs = require("fs");
 function parseUser(obj) {
     if (typeof obj.id !== "number" ||
         typeof obj.name !== "string" ||
@@ -55,19 +56,23 @@ function validateOrderUsers(users, orders) {
     const userIds = users.map((user) => user.id);
     return orders.filter((order) => userIds.includes(order.userId));
 }
-const rawData = {
-    users: [
-        { id: 1, name: "Abbas", email: "abbas@mail.com" },
-        { id: "wrong", name: "Invalid", email: "bad@mail.com" },
-    ],
-    orders: [
-        { id: 101, userId: 1, amount: 250 },
-        { id: 102, userId: 99, amount: 100 },
-    ],
-};
+let rawData;
+try {
+    const fileContent = fs.readFileSync("data.json", "utf-8");
+    rawData = JSON.parse(fileContent);
+}
+catch (error) {
+    console.error("Failed to read or parse data.json");
+    process.exit(1);
+}
 const users = parseUsers(rawData.users);
 const orders = parseOrders(rawData.orders);
 const validOrders = validateOrderUsers(users, orders);
 console.log("Valid users:", users);
-console.log("Valid orders (linked to real users):", validOrders);
+console.log("Valid orders:", validOrders);
+if (users.length === 0) {
+    console.error("No valid users found.");
+    process.exit(1);
+}
+process.exit(0);
 //# sourceMappingURL=index.js.map

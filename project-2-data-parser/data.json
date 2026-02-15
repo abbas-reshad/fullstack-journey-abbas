@@ -1,0 +1,10 @@
+{
+  "users": [
+    { "id": 1, "name": "Abbas", "email": "abbas@mail.com" },
+    { "id": "wrong", "name": "Invalid", "email": "bad@mail.com" }
+  ],
+  "orders": [
+    { "id": 101, "userId": 1, "amount": 250 },
+    { "id": 102, "userId": 99, "amount": 100 }
+  ]
+}
