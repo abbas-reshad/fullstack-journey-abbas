@@ -170,3 +170,42 @@ The following manual tests were used to verify correctness and edge cases:
 - All functions include basic input validation.
 - Functions are written to be simple, readable, and reusable.
 - This project is part of Month 1 learning milestones.
+
+Project 2 – Type-Safe JSON Data Parser
+Overview
+
+This project is a CLI-based JSON data parser built with TypeScript and Node.js.
+
+It reads user and order data from a JSON file, validates the structure at runtime, enforces referential integrity between users and orders, and exits with proper status codes.
+
+The project demonstrates how TypeScript improves safety when handling untrusted external data.
+
+Objectives
+
+Parse external JSON data safely
+
+Validate data structure at runtime
+
+Enforce referential integrity (orders must reference valid users)
+
+Implement proper CLI exit behavior
+
+Demonstrate type-safe design using TypeScript
+
+Architecture Overview
+
+The application performs the following steps:
+
+Read JSON file (data.json)
+
+Parse raw data
+
+Validate user objects
+
+Validate order objects
+
+Filter invalid entries
+
+Ensure orders reference valid users
+
+Exit with appropriate CLI status code
