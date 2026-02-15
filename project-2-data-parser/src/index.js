@@ -50,6 +50,11 @@ function parseOrders(arr) {
     }
     return result;
 }
+//Cross Validation
+function validateOrderUsers(users, orders) {
+    const userIds = users.map((user) => user.id);
+    return orders.filter((order) => userIds.includes(order.userId));
+}
 const rawData = {
     users: [
         { id: 1, name: "Abbas", email: "abbas@mail.com" },
@@ -62,6 +67,7 @@ const rawData = {
 };
 const users = parseUsers(rawData.users);
 const orders = parseOrders(rawData.orders);
+const validOrders = validateOrderUsers(users, orders);
 console.log("Valid users:", users);
-console.log("Valid orders:", orders);
+console.log("Valid orders (linked to real users):", validOrders);
 //# sourceMappingURL=index.js.map
