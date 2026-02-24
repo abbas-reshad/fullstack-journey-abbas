@@ -11,7 +11,7 @@ const result = normalizeWhitespace(example);
 
 //for numbers utilites
 const { clamp, range } = require("./numbers");
-
+//for string
 console.log("Original:", example);
 console.log("Normalized:", result);
 
