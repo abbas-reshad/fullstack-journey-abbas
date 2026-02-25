@@ -10,8 +10,8 @@ function normalizeWhitespace(text) {
 
 // Addittional sting utility: Convertin a string to camelCase
 
-function toCamelCase(text) {
-  if (typeof text !== "string") {
+function toCamelCase(num) {
+  if (typeof num !== Number) {
     throw new Error("toCamelCase expects a string");
   }
 
